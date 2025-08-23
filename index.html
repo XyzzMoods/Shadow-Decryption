@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadow Decryptor - Beautify JavaScript & HTML</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+    <style>
+        .code-editor {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            tab-size: 4;
+            -moz-tab-size: 4;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .syntax-highlight {
+            color: #e06c75; /* Red for keywords */
+        }
+        .syntax-string {
+            color: #98c379; /* Green for strings */
+        }
+        .syntax-comment {
+            color: #5c6370; /* Gray for comments */
+        }
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg">
+    <!-- Header -->
+    <nav class="glass-effect fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="h-8 w-8 bg-white rounded-lg flex items-center justify-center">
+                            <svg class="h-5 w-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-white">Shadow Decryptor</h1>
+                        <p class="text-sm text-white/80">Beautify JavaScript & HTML Code</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com" class="text-white/80 hover:text-white transition-colors">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <!-- Hero Section -->
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    Transform Kode Minified Menjadi
+                    <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                        Kode Yang Mudah Dibaca
+                    </span>
+                </h2>
+                <p class="text-lg text-white/80 max-w-3xl mx-auto">
+                    Alat online untuk mendekripsi dan memformat JavaScript, HTML, dan CSS yang ter-minify atau ter-obfuscate
+                </p>
+            </div>
+
+            <!-- Main Card -->
+            <div class="glass-effect rounded-2xl p-6 md:p-8 mb-8">
+                <!-- File Upload -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-white mb-2">Upload File (opsional)</label>
+                    <div class="flex items-center space-x-4">
+                        <input type="file" id="fileInput" accept=".js,.html,.css,.txt" class="hidden">
+                        <button onclick="document.getElementById('fileInput').click()" class="bg-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors">
+                            Pilih File
+                        </button>
+                        <span id="fileName" class="text-white/70 text-sm">Tidak ada file dipilih</span>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-white mb-2">Tempel Kode JavaScript/HTML</label>
+                    <div class="relative">
+                        <textarea 
+                            id="inputCode" 
+                            placeholder="Tempel kode minified atau obfuscated di sini..."
+                            class="w-full h-64 code-editor bg-gray-900 text-gray-100 rounded-lg p-4 focus:ring-2 focus:ring-purple-400 focus:outline-none scrollbar-custom"
+                        ></textarea>
+                        <div class="absolute top-2 right-2">
+                            <button onclick="clearInput()" class="bg-red-500/20 text-red-200 px-3 py-1 rounded text-sm hover:bg-red-500/30 transition-colors">
+                                Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div>
+                        <label class="block text-sm font-medium text-white mb-2">Jenis Kode</label>
+                        <select id="codeType" class="w-full bg-gray-800 text-white rounded-lg p-2 focus:ring-2 focus:ring-purple-400">
+                            <option value="js">JavaScript</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-white mb-2">Indentasi</label>
+                        <select id="indentSize" class="w-full bg-gray-800 text-white rounded-lg p-2 focus:ring-2 focus:ring-purple-400">
+                            <option value="2">2 Spasi</option>
+                            <option value="4" selected>4 Spasi</option>
+                            <option value="8">8 Spasi</option>
+                            <option value="tabs">Tab</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-white mb-2">Opsi Tambahan</label>
+                        <div class="space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="preserveNewlines" class="rounded text-purple-400">
+                                <span class="ml-2 text-white text-sm">Pertahankan Newlines</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="wrapLineLength" class="rounded text-purple-400" checked>
+                                <span class="ml-2 text-white text-sm">Wrap Long Lines</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <button onclick="beautifyCode()" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105">
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                        </svg>
+                        Beautify Code
+                    </button>
+                    <button onclick="copyToClipboard('outputCode')" id="copyBtn" class="bg-white/20 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/30 transition-colors" disabled>
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                        </svg>
+                        Salin Hasil
+                    </button>
+                    <button onclick="downloadCode()" id="downloadBtn" class="bg-white/20 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/30 transition-colors" disabled>
+                        <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        Download
+                    </button>
+                </div>
+
+                <!-- Output Area -->
+                <div>
+                    <label class="block text-sm font-medium text-white mb-2">Hasil Beautifikasi</label>
+                    <div class="relative">
+                        <pre id="outputCode" class="w-full h-64 code-editor bg-gray-900 text-gray-100 rounded-lg p-4 overflow-auto scrollbar-custom whitespace-pre-wrap"></pre>
+                        <div id="emptyState" class="absolute inset-0 flex items-center justify-center text-gray-400">
+                            <div class="text-center">
+                                <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                                <p>Hasil beautifikasi akan muncul di sini</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="glass-effect rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Cepat & Efisien</h3>
+                    <p class="text-white/70">Proses beautifikasi instan tanpa perlu upload ke server</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Aman & Privat</h3>
+                    <p class="text-white/70">Semua proses dilakukan di browser, data tidak dikirim ke server</p>
+                </div>
+                <div class="glass-effect rounded-2xl p-6 text-center">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Multi-Format</h3>
+                    <p class="text-white/70">Mendukung JavaScript, HTML, CSS dengan berbagai opsi formatting</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-effect border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-white/60">
+                    &copy; 2025 Shadow Decryptor. Dibuat Oleh XyzzMoods - Deruhu
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // File input handler
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('fileName').textContent = file.name;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('inputCode').value = e.target.result;
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        // Clear input
+        function clearInput() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('fileInput').value = '';
+            document.getElementById('fileName').textContent = 'Tidak ada file dipilih';
+            clearOutput();
+        }
+
+        // Clear output
+        function clearOutput() {
+            document.getElementById('outputCode').textContent = '';
+            document.getElementById('emptyState').style.display = 'flex';
+            document.getElementById('copyBtn').disabled = true;
+            document.getElementById('downloadBtn').disabled = true;
+        }
+
+        // Beautify code
+        function beautifyCode() {
+            const input = document.getElementById('inputCode').value.trim();
+            if (!input) {
+                alert('Silakan masukkan kode terlebih dahulu!');
+                return;
+            }
+
+            const codeType = document.getElementById('codeType').value;
+            const indentSize = document.getElementById('indentSize').value;
+            const preserveNewlines = document.getElementById('preserveNewlines').checked;
+            const wrapLineLength = document.getElementById('wrapLineLength').checked;
+
+            let beautified = '';
+            
+            try {
+                switch (codeType) {
+                    case 'js':
+                        beautified = js_beautify(input, {
+                            indent_size: indentSize === 'tabs' ? 1 : parseInt(indentSize),
+                            indent_with_tabs: indentSize === 'tabs',
+                            preserve_newlines: preserveNewlines,
+                            wrap_line_length: wrapLineLength ? 80 : 0
+                        });
+                        break;
+                    case 'html':
+                        beautified = html_beautify(input, {
+                            indent_size: indentSize === 'tabs' ? 1 : parseInt(indentSize),
+                            indent_with_tabs: indentSize === 'tabs',
+                            preserve_newlines: preserveNewlines,
+                            wrap_line_length: wrapLineLength ? 80 : 0
+                        });
+                        break;
+                    case 'css':
+                        beautified = css_beautify(input, {
+                            indent_size: indentSize === 'tabs' ? 1 : parseInt(indentSize),
+                            indent_with_tabs: indentSize === 'tabs'
+                        });
+                        break;
+                }
+
+                document.getElementById('outputCode').textContent = beautified;
+                document.getElementById('emptyState').style.display = 'none';
+                document.getElementById('copyBtn').disabled = false;
+                document.getElementById('downloadBtn').disabled = false;
+
+                // Apply basic syntax highlighting
+                applySyntaxHighlighting(beautified, codeType);
+
+            } catch (error) {
+                document.getElementById('outputCode').textContent = 'Error: ' + error.message;
+                document.getElementById('emptyState').style.display = 'none';
+            }
+        }
+
+        // Basic syntax highlighting
+        function applySyntaxHighlighting(code, type) {
+            const output = document.getElementById('outputCode');
+            let highlighted = code;
+            
+            if (type === 'js') {
+                // Simple JS highlighting
+                highlighted = highlighted
+                    .replace(/(const|let|var|function|return|if|else|for|while|switch|case|break|default|class|extends|import|export|from|await|async)/g, '<span class="syntax-highlight">$1</span>')
+                    .replace(/(".*?"|'.*?'|`.*?`)/g, '<span class="syntax-string">$1</span>')
+                    .replace(/\/\/.*?$/gm, '<span class="syntax-comment">$&</span>')
+                    .replace(/\/\*[\s\S]*?\*\//g, '<span class="syntax-comment">$&</span>');
+            }
+            
+            output.innerHTML = highlighted;
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
